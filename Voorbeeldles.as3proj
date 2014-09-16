@@ -2,9 +2,9 @@
 <project version="2">
   <!-- Output SWF options -->
   <output>
-    <movie outputType="OtherIDE" />
+    <movie outputType="Application" />
     <movie input="" />
-    <movie path="" />
+    <movie path="bin\Voorbeeldles.swf" />
     <movie fps="30" />
     <movie width="800" />
     <movie height="600" />
@@ -15,7 +15,8 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="." />
+    <class path="src" />
+    <class path="entity_system_les_5\EntitySystem_voorbeeld" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -27,7 +28,7 @@
     <option inline="False" />
     <option locale="" />
     <option loadConfig="" />
-    <option optimize="False" />
+    <option optimize="True" />
     <option omitTraces="True" />
     <option showActionScriptWarnings="True" />
     <option showBindingWarnings="True" />
@@ -64,7 +65,7 @@
   </rslPaths>
   <!-- Intrinsic Libraries -->
   <intrinsics>
-    <element path="Library\AS3\frameworks\FlashIDE" />
+    <!-- example: <element path="..." /> -->
   </intrinsics>
   <!-- Assets to embed into the output SWF -->
   <library>
@@ -72,7 +73,7 @@
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="Factory\Main.as" />
+    <compile path="Main.as" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>

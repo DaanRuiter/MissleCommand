@@ -14,14 +14,12 @@ package src.Objects
 		{
 			this.x = _x;
 			this.y = _y;
-			trace(x + " - " + y);
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
 		private function init(e:Event):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			trace(x + " - " + y);
 			this.sprite = new ART_Explosion();
 			addChild(sprite);
 			lifeTime = this.sprite.totalFrames;

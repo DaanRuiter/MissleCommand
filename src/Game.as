@@ -17,6 +17,8 @@ package src
 	public class Game extends MovieClip
 	{
 		private var platform:MovieClip = new ART_platform();
+		private var rocketFactory:RocketFactory = new RocketFactory();
+		private var lineFactory:LineFactory = new LineFactory();
 		private var gameObjectsInStage:Array = new Array();
 		private var enemyRockets:Array = new Array();
 		private var explosions:Array = [];
@@ -81,19 +83,11 @@ package src
 		{
 			for (var i:int = 0; i < num; i++) 
 			{
-				var rocket:Rocket = new Rocket();
-				addChild(rocket);
-				rocket.setStartPos(rocket.x, rocket.y);
-				rocket.x = Math.random() * stage.stageWidth;
-				rocket.y = Math.random() *- 200;
+				var rocket = rocketFactory.makeRocket(RocketFactory.ROCKET_DEFAULT, stage.stageWidth);
 				enemyRockets.push(rocket);
-				var line = new Shape();
-				line.graphics.lineStyle(2, 0xFF0000, 1);
-				line.graphics.beginFill(0xFF0000);
-				line.graphics.endFill();
-				line.graphics.moveTo(rocket.x, rocket.y); 
-				line.graphics.lineTo(rocket.x, rocket.y);
+				var line = lineFactory.makeLine(rocket);
 				addChild(line);
+				addChild(rocket);
 				lines.push(line);
 				Globals.rocketsInWave++;
 			}
