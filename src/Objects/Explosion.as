@@ -19,11 +19,14 @@ package src.Objects
 		
 		private function init(e:Event):void 
 		{
+			removable = false;
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			this.sprite = new ART_Explosion();
 			addChild(sprite);
 			lifeTime = this.sprite.totalFrames;
 			addEventListener(Event.ENTER_FRAME, tick);
+			this.scaleX = 0.65;
+			this.scaleY = this.scaleX;
 		}
 		
 		private function tick(e:Event):void 
@@ -32,7 +35,7 @@ package src.Objects
 			{
 				removeEventListener(Event.ENTER_FRAME, tick);
 				removeChild(sprite);
-				dispatchEvent(new Event(EXPLOSION_END));
+				removable = true;
 			}
 		}
 		

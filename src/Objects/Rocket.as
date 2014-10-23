@@ -20,14 +20,15 @@ package src.Objects
 			addChild(sprite);
 			affectedByGravity = true;
 			testCollision = true;
-			collisionTarget = "ground";
-			//addChild(line);
+			collisionTarget = "city";
 		}
 		
 		public override function update(e:Event):void
 		{
 			super.update(e);
-			//line.updatePos(x,y);
+			if (y > stage.stageHeight) {
+				removable = true;
+			}
 		}
 		
 	}

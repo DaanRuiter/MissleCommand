@@ -12,18 +12,11 @@ package src.Objects
 	public class PlayerRocket extends GameObject
 	{
 		private var destination:Point;
-		private var xReached:Boolean;
 		private var yReached:Boolean;
 		private var startSide:Boolean;
 		
 		public function PlayerRocket() 
 		{
-			addEventListener(Event.ADDED_TO_STAGE, init)
-		}
-		
-		private function init(e:Event):void 
-		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
 			sprite = new ART_playerRocket();
 			addChild(sprite);
 			destination = new Point();
@@ -50,28 +43,26 @@ package src.Objects
 			
 			if (startSide)
 			{
-				if (this.x >= destination.x)
-				{
-					xReached = true;
-				}
-			}else{
-				if (this.x <= destination.x)
-				{
-					xReached = true;
-				}
 			}
 			if (this.y <= destination.y)
 			{
 				yReached = true;
 			}
-			if (xReached && yReached)
+			if (yReached)
 			{
-				this.removeEventListener(Event.ENTER_FRAME, update);
-				this.removable = true;
+				removeRocket();
+			}
+			if (this.y > stage.stageHeight) 
+			{
+				removeRocket();
 			}
 		}
 		
-		//public function getInfo()
+		private function removeRocket():void
+		{
+			this.removeEventListener(Event.ENTER_FRAME, update);
+			this.removable = true;
+		}
 		
 	}
 

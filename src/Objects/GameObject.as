@@ -28,6 +28,10 @@ package src.Objects
 		
 		public function update(e:Event):void
 		{
+			if (Globals.gameOver)
+			{
+				removeEventListener(Event.ENTER_FRAME, update);
+			}
 			if (affectedByGravity)
 			{
 				this.y += Globals.gravityStrength;
@@ -39,7 +43,7 @@ package src.Objects
 			return testCollision;
 		}
 		
-		public function setRemovable()
+		public function setRemovable():void
 		{
 			removable = true;
 		}
